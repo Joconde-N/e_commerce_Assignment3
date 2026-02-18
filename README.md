@@ -1,9 +1,17 @@
 # Question 4 – E-Commerce Product API
 
 ## Description
-This project implements a REST API for an e-commerce product catalog.
-It supports pagination, filtering, searching, stock management,
-and full CRUD operations for products.
+This project implements a REST API for managing an e-commerce product catalog using Spring Boot.
+
+It supports:
+- Full CRUD operations
+- Searching products by keyword (name or description)
+- Filtering products by brand
+- Filtering products within a price range
+- Viewing products that are in stock
+- Updating product stock quantity
+
+Filtering and searching logic are implemented in the Service layer using standard Java loops and conditional statements.
 
 ## How to Run
 1. Open the project in your IDE.
@@ -16,19 +24,19 @@ and full CRUD operations for products.
 ### Get all products
 GET /api/products
 
-### Get products with pagination
-GET /api/products?page=1&limit=5
-
 ### Get product by ID
 GET /api/products/{productId}
 
 ### Get products by category
-GET /api/products/category/Electronics
+GET /api/products/searchByCategory?category=Electronics
 
 ### Get products by brand
+GET /api/products/brand/{brand}
+
+Example:
 GET /api/products/brand/TechBrand
 
-### Search products
+### Search products by keyword
 GET /api/products/search?keyword=laptop
 
 ### Filter by price range
@@ -38,7 +46,18 @@ GET /api/products/price-range?min=50&max=300
 GET /api/products/in-stock
 
 ### Add product
-POST /api/products
+POST /api/products/addProduct
+
+Example JSON body:
+{
+  "productId": 1,
+  "name": "Laptop",
+  "description": "Gaming laptop",
+  "price": 1200,
+  "category": "Electronics",
+  "stockQuantity": 10,
+  "brand": "TechBrand"
+}
 
 ### Update product
 PUT /api/products/{productId}
@@ -51,4 +70,4 @@ DELETE /api/products/{productId}
 
 ## Testing
 All endpoints were tested using Postman.
-A Postman collection is included in the repository.
+Each endpoint was verified for successful responses and error handling cases.
