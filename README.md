@@ -1,4 +1,4 @@
-# Question 4 – E-Commerce Product API
+# E-Commerce Product API
 
 ## Description
 This project implements a REST API for managing an e-commerce product catalog using Spring Boot.
